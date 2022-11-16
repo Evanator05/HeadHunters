@@ -22,11 +22,13 @@ public final class HeadHunters extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
+
         // Plugin startup logic
-        getCommand("startHeadHunt").setExecutor(new StartHeadHunt());
-        getCommand("giveHead").setExecutor(new GiveHead());
-        getCommand("setBounties").setExecutor(new SetBounties());
-        getCommand("getBounty").setExecutor(new GetBounty());
+        this.getCommand("startHeadHunt").setExecutor(new StartHeadHunt());
+        this.getCommand("giveHead").setExecutor(new GiveHead());
+        this.getCommand("setBounties").setExecutor(new SetBounties());
+        this.getCommand("getBounty").setExecutor(new GetBounty());
 
         this.getServer().getPluginManager().registerEvents(new PlayerJoinHandler(), this);
         this.getServer().getPluginManager().registerEvents(new DeathHandler(), this);

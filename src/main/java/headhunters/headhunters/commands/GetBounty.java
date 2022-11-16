@@ -15,11 +15,6 @@ import static headhunters.headhunters.HeadHunters.GetInstance;
 public class GetBounty implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.isOp()) {
-            sender.sendMessage("This command requires operator privileges");
-            return true;
-        }
-
         if (!(sender instanceof Player)) {
             sender.sendMessage("Must be a player to use this command");
             return true;
@@ -28,8 +23,11 @@ public class GetBounty implements CommandExecutor {
         Player player = (Player) sender;
 
         String struuid = player.getPersistentDataContainer().get(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING);
-        UUID uuid = UUID.fromString(struuid);
-        String playerName = Bukkit.getPlayer(uuid).getName();
+        String playerName = "Nobody";
+        if (!(struuid == null)) {
+            UUID uuid = UUID.fromString(struuid);
+            playerName = Bukkit.getPlayer(uuid).getName();
+        }
         sender.sendMessage("Your target is: " + playerName);
         return true;
     }

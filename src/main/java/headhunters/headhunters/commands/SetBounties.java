@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.Collection;
+
 import static headhunters.headhunters.HeadHunters.GetInstance;
 
 public class SetBounties implements CommandExecutor {
@@ -29,8 +31,8 @@ public class SetBounties implements CommandExecutor {
                 break;
             case ("unset"): // remove all players bounties (requires players are online)
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING, null);
-                    player.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "hunter"), PersistentDataType.STRING, null);
+                    player.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING, "null");
+                    player.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "hunter"), PersistentDataType.STRING, "null");
                 }
                 break;
             default:
@@ -42,9 +44,9 @@ public class SetBounties implements CommandExecutor {
 
     private void setBounties() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.getPersistentDataContainer().get(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING) == null) {
+            if (player.getPersistentDataContainer().get(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING) == "null") {
                 for (Player player2 : Bukkit.getOnlinePlayers()) {
-                    if (player2.getPersistentDataContainer().get(new NamespacedKey(GetInstance(), "hunter"), PersistentDataType.STRING) == null) {
+                    if (player2.getPersistentDataContainer().get(new NamespacedKey(GetInstance(), "hunter"), PersistentDataType.STRING) == "null") {
                         player.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "target"), PersistentDataType.STRING, player2.getUniqueId().toString());
                         player2.getPersistentDataContainer().set(new NamespacedKey(GetInstance(), "hunter"), PersistentDataType.STRING, player.getUniqueId().toString());
                     }
@@ -53,13 +55,3 @@ public class SetBounties implements CommandExecutor {
         }
     } // end of setBounties
 }
-
-
-
-
-
-
-
-
-
-

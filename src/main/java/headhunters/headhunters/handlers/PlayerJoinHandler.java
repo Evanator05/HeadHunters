@@ -17,10 +17,10 @@ public class PlayerJoinHandler implements Listener {
         p.setWhitelisted(true);
         PersistentDataContainer data = p.getPersistentDataContainer();
         if (!data.has(new NamespacedKey(HeadHunters.GetInstance(), "target"), PersistentDataType.STRING)) {
-            data.set(new NamespacedKey(HeadHunters.GetInstance(), "target"), PersistentDataType.STRING, null);
+            data.set(new NamespacedKey(HeadHunters.GetInstance(), "target"), PersistentDataType.STRING, "null");
         }
         if (!data.has(new NamespacedKey(HeadHunters.GetInstance(), "hunter"), PersistentDataType.STRING)) {
-            data.set(new NamespacedKey(HeadHunters.GetInstance(), "hunter"), PersistentDataType.STRING, null);
+            data.set(new NamespacedKey(HeadHunters.GetInstance(), "hunter"), PersistentDataType.STRING, "null");
         }
 
     }
