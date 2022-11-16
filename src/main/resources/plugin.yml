@@ -1,0 +1,19 @@
+name: HeadHunters
+version: '${project.version}'
+main: headhunters.headhunters.HeadHunters
+api-version: 1.19
+authors: [ Teemolert ]
+description: Hunt Heads
+commands:
+  startHeadHunt:
+      description: Starts the head hunt
+      usage: /startHeadHunt
+  giveHead:
+    description: Gives a specific player their head
+    usage: /giveHead (playerName)
+  setBounties:
+    description: Randomly selects player bounties
+    usage: /setBounties
+  getBounty:
+    description: says current players bounty
+    usage: /getBounty
